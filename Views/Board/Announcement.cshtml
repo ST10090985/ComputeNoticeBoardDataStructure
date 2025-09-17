@@ -1,0 +1,36 @@
+﻿Announcement.cshtml
+@model List<ComputeNoticeBoardDataStructure.Models.Announcement>
+<!-- Strongly typed model -->
+ 
+<h2>Announcements (Latest First)</h2>
+ 
+<!-- Link to add a new announcement -->
+<a href="/Board/AddAnnouncement" class="btn btn-primary">Add Announcement</a>
+ 
+<!-- Link to remove the latest announcement (pop from stack) -->
+<a href="/Board/RemoveAnnouncement" class="btn btn-danger">Remove Latest</a>
+ 
+<!-- Table to display all announcements -->
+<table class="table mt-3">
+<thead>
+<tr>
+<th>Message</th>      <!-- What the announcement says -->
+<th>Posted By</th>    <!-- Who posted it -->
+<th>Date</th>         <!-- When it was posted -->
+</tr>
+</thead>
+<tbody>
+    @foreach(var a in Model) // For each announcement in the list
+    {
+<tr>
+<td>@a.Message</td>     <!-- Display message -->
+<td>@a.PostedBy</td>    <!-- Display poster -->
+<td>@a.PostedOn.ToString("g")</td> <!-- Display date/time, general format -->
+</tr>
+    }
+</tbody>
+</table>
+ 
+<!-- Link to go back to dashboard -->
+<a href="/Board/Index" class="btn btn-link">Back to Home</a>
+ 

@@ -1,0 +1,22 @@
+﻿AddAnnouncement.cshtml
+@model ComputeNoticeBoardDataStructure.Models.Announcement
+<!-- Form expects an Announcement object -->
+ 
+<h2>Add Announcement</h2>
+ 
+<!-- Form submits to AddAnnouncement action in BoardController -->
+<form asp-action="AddAnnouncement" method="post">
+<div class="mb-3">
+<label>Message:</label>
+<!-- Input for message; "asp-for" binds to Message property in model -->
+<input asp-for="Message" required class="form-control" />
+</div>
+<div class="mb-3">
+<label>Your Name:</label>
+<!-- Input for who is posting -->
+<input asp-for="PostedBy" required class="form-control" />
+</div>
+<button type="submit" class="btn btn-success">Post</button>
+<!-- Link to cancel/go back to list -->
+<a href="/Board/Announcements" class="btn btn-secondary">Cancel</a>
+</form>

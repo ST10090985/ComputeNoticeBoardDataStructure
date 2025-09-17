@@ -1,0 +1,37 @@
+﻿Events.cshtml
+@model List<ComputeNoticeBoardDataStructure.Models.Event> 
+<!-- List of events as model -->
+ 
+<h2>Urgent Events (Priority Queue: Most Urgent First)</h2>
+ 
+<!-- Link to add a new event -->
+<a href="/Board/AddEvent" class="btn btn-primary">Add Event</a>
+ 
+<!-- Link to remove the most urgent event (priority queue logic) -->
+<a href="/Board/RemoveEvent" class="btn btn-danger">Remove Top Event</a>
+ 
+<!-- Table of events, sorted by priority -->
+<table class="table mt-3">
+<thead>
+<tr>
+<th>Title</th>       <!-- Title of the event -->
+<th>Details</th>     <!-- More info about event -->
+<th>Priority</th>    <!-- Urgency: 1=most urgent -->
+<th>Date</th>        <!-- When posted -->
+</tr>
+</thead>
+<tbody>
+    @foreach(var ev in Model) // For each event in the list
+    {
+<tr>
+<td>@ev.Title</td>        <!-- Display title -->
+<td>@ev.Details</td>      <!-- Display details -->
+<td>@ev.Priority</td>     <!-- Display priority (lower is higher) -->
+<td>@ev.Date.ToString("g")</td> <!-- Display date/time -->
+</tr>
+    }
+</tbody>
+</table>
+ 
+<!-- Link back to dashboard -->
+<a href="/Board/Index" class="btn btn-link">Back to Home</a>

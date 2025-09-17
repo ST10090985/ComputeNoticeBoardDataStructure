@@ -1,0 +1,20 @@
+﻿AddNotice.cshtml
+@model ComputeNoticeBoardDataStructure.Models.Notice
+<!-- Form expects a Notice object -->
+ 
+<h2>Add Notice</h2>
+ 
+<form asp-action="AddNotice" method="post">
+<div class="mb-3">
+<label>Notice:</label>
+<!-- Input for notice message -->
+<input asp-for="Message" required class="form-control" />
+</div>
+<div class="mb-3">
+<label>Your Name:</label>
+<!-- Input for author name -->
+<input asp-for="Author" required class="form-control" />
+</div>
+<button type="submit" class="btn btn-success">Post</button>
+<a href="/Board/Notices" class="btn btn-secondary">Cancel</a>
+</form>

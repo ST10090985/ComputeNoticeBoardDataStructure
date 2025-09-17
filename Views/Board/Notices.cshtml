@@ -1,0 +1,35 @@
+﻿Notices.cshtml
+@model List<ComputeNoticeBoardDataStructure.Models.Notice>
+<!-- List of notices as model -->
+ 
+<h2>Public Notices (First In, First Out)</h2>
+ 
+<!-- Link to add a new notice -->
+<a href="/Board/AddNotice" class="btn btn-primary">Add Notice</a>
+ 
+<!-- Link to remove the next notice (dequeue from queue) -->
+<a href="/Board/RemoveNotice" class="btn btn-danger">Remove Next</a>
+ 
+<!-- Table for all notices -->
+<table class="table mt-3">
+<thead>
+<tr>
+<th>Message</th>      <!-- What the notice says -->
+<th>Author</th>       <!-- Who wrote the notice -->
+<th>Date</th>         <!-- When it was posted -->
+</tr>
+</thead>
+<tbody>
+    @foreach(var n in Model) // For each notice in the list
+    {
+<tr>
+<td>@n.Message</td>     <!-- Display notice -->
+<td>@n.Author</td>      <!-- Display author -->
+<td>@n.Date.ToString("g")</td> <!-- Display date/time -->
+</tr>
+    }
+</tbody>
+</table>
+ 
+<!-- Link back to dashboard -->
+<a href="/Board/Index" class="btn btn-link">Back to Home</a>

@@ -1,0 +1,73 @@
+﻿Index.cshtml
+@{
+    // Sets the page title in the browser
+    ViewBag.Title = "Campus Notice Board";
+}
+
+<h2>Campus Notice Board</h2>
+<hr />
+
+<!-- === Latest Announcement (Stack: LIFO, so latest is first) === -->
+<h3>Latest Announcement</h3>
+@if (ViewBag.LatestAnnouncement != null)
+{
+    <!-- If there is an announcement, show it -->
+    <div>
+        <!-- Show the message and who posted it -->
+        @ViewBag.LatestAnnouncement.Message
+        (by @ViewBag.LatestAnnouncement.PostedBy)
+        <!-- Show when it was posted -->
+        <span style="color:gray;">
+            (@ViewBag.LatestAnnouncement.PostedOn.ToString("g"))
+        </span>
+    </div>
+}
+else
+{
+    <!-- If stack is empty, tell the user -->
+    <div>No announcements yet.</div>
+}
+
+<!-- === Next Notice (Queue: FIFO, so oldest is first) === -->
+<h3>Next Public Notice</h3>
+@if (ViewBag.NextNotice != null)
+{
+    <!-- If there is a notice, show it -->
+    <div>
+        @ViewBag.NextNotice.Message
+        (by @ViewBag.NextNotice.Author)
+        <span style="color:gray;">
+            (@ViewBag.NextNotice.Date.ToString("g"))
+        </span>
+    </div>
+}
+else
+{
+    <div>No notices yet.</div>
+}
+
+<!-- === Top Event (Priority Queue: most urgent first) === -->
+<h3>Top Urgent Event</h3>
+@if (ViewBag.TopEvent != null)
+{
+    <!-- If there is an event, show it -->
+    <div>
+        <b>@ViewBag.TopEvent.Title</b> - @ViewBag.TopEvent.Details <br />
+        Priority: <b>@ViewBag.TopEvent.Priority</b>
+        <span style="color:gray;">
+            (@ViewBag.TopEvent.Date.ToString("g"))
+        </span>
+    </div>
+}
+else
+{
+    <div>No urgent events.</div>
+}
+
+<!-- === Navigation links to full lists for each section === -->
+<p style="margin-top:2em;">
+    <!-- These go to the respective pages -->
+    <a href="/Board/Announcements">View All Announcements</a> |
+    <a href="/Board/Notices">View All Notices</a> |
+    <a href="/Board/Events">View All Events</a>
+</p>

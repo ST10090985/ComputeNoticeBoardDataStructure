@@ -1,0 +1,29 @@
+﻿AddEvent.cshtml
+@model ComputeNoticeBoardDataStructure.Models.Event
+<!-- Form expects an Event object -->
+ 
+<h2>Add Event (Set Priority: 1 = Urgent, 5 = Not urgent)</h2>
+ 
+<form asp-action="AddEvent" method="post">
+<div class="mb-3">
+<label>Title:</label>
+<!-- Input for event title -->
+<input asp-for="Title" required class="form-control" />
+</div>
+<div class="mb-3">
+<label>Details:</label>
+<!-- Input for event details -->
+<input asp-for="Details" required class="form-control" />
+</div>
+<div class="mb-3">
+<label>Priority:</label>
+<!-- Input for priority: number, 1 is most urgent, 5 is least -->
+<input asp-for="Priority" type="number" min="1" max="5" value="3" required class="form-control" />
+<small class="form-text text-muted">
+            1 = Most urgent, 5 = Least urgent
+</small>
+</div>
+<button type="submit" class="btn btn-success">Post</button>
+<a href="/Board/Events" class="btn btn-secondary">Cancel</a>
+</form>
+ 
