@@ -116,7 +116,7 @@ namespace ComputeNoticeBoardDataStructure.Controllers
         public IActionResult RemoveEvent()
         {
            _eventQueue.RemoveHighestPriority();
-            return View(_eventQueue.GetEvents());
+            return RedirectToAction("Events"); // Redirects user to Board/Events
         }
     }
 }
